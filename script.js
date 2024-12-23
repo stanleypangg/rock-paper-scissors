@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    randomNum = Math.floor(Math.random() * 3);
+    let randomNum = Math.floor(Math.random() * 3);
 
     switch (randomNum) {
         case 0:
@@ -9,4 +9,17 @@ function getComputerChoice() {
         case 2:
             return "Scissors";
     }
+}
+
+function getHumanChoice() {
+    let choice;
+    while (true) {
+        choice = prompt("Rock, Paper or Scissors: ");
+        if (choice === "Rock" || choice === "Paper" || choice === "Scissors") {
+            break;
+        } else {
+            alert("Invalid choice");
+        }
+    }
+    return;
 }
