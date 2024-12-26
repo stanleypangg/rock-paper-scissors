@@ -34,25 +34,41 @@ function playRound(humanChoice, computerChoice) {
         humanChoice === "scissors" && computerChoice == "paper" ||
         humanChoice === "paper" && computerChoice == "rock"
     ) {
-        alert(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`);
-        // humanScore++;
+        result.textContent = `You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`;
+        humanScore++;
     } else if (
         computerChoice === "rock" && humanChoice === "scissors" ||
         computerChoice === "scissors" && humanChoice == "paper" ||
         computerChoice === "paper" && humanChoice == "rock"
     ) {
-        alert(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`);
-        // computerScore++;
+        result.textContent = `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`;
+        computerScore++;
     } else {
-        alert("It's a tie!");
+        result.textContent = "It's a tie!";
     }
 
-    // let humanScore = 0;
-    // let computerScore = 0;
+    score.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
+
+    if (humanScore === 5) {
+        winner.textContent = "You win!";
+    } else if (computerScore === 5) {
+        winner.textContent = "Computer wins!";
+    }
+
     // playRound(getHumanChoice(), getComputerChoice());
 
     // alert(`You score: ${humanScore}\nComputer score: ${computerScore}`);
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+const score = document.querySelector(".score");
+score.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
+
+const result = document.querySelector(".result");
+
+const winner = document.querySelector(".winner");
 
 const rock = document.querySelector("#rock");
 rock.addEventListener("click", () => {
@@ -68,5 +84,4 @@ paper.addEventListener("click", () => {
 const scissors = document.querySelector("#scissors");
 scissors.addEventListener("click", () => {
     playRound("scissors", getComputerChoice());
-
 });
